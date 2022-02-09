@@ -5,7 +5,7 @@
 
 # ref: http://www/gnu.org/software/make/manual/make.html
 
-SUBDIRS = manual impatient-guide
+SUBDIRS = manual #impatient-guide
 
 .PHONY: subdirs $(SUBDIRS) builddir all
 
@@ -41,7 +41,7 @@ clean:
 	$(MAKE) clean -C $(SUBDIRS)
 
 nxdl2rst:
-	$(MAKE) -C manual/source
+	$(MAKE) all -C manual/source
 
 builddir :: 
 	mkdir -p build

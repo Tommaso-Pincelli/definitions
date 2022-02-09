@@ -1,9 +1,8 @@
-.. image:: img/NeXus.png
-	:width: 40%
-
 =======================================
 User Manual and Reference Documentation
 =======================================
+
+Welcome to the user manual of the NeXus for FAIRmat project.
 
 https://www.nexusformat.org/
 

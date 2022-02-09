@@ -19,7 +19,7 @@ import sys, os, datetime
 
 # -- Project information -----------------------------------------------------
 
-project = 'nexus'
+project = 'nexus-fairmat'
 author = 'NIAC, https://www.nexusformat.org'
 copyright = u'1996-{}, {}'.format(datetime.datetime.now().year, author)
 description = u'NeXus: A Common Data Format for Neutron, X-ray, and Muon Science'
@@ -63,12 +63,24 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 # html_theme = 'alabaster'
-html_theme = 'sphinxdoc'
+# html_theme = 'sphinxdoc'
+html_theme = 'sphinx_rtd_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+html_theme_options = {
+    'logo_only': False,
+    'collapse_navigation': True,
+    'sticky_navigation': True,
+    'navigation_depth': 4,
+    'includehidden': True,
+    'titles_only': False
+}
+
+html_logo = 'img/FAIRmat.png'
 
 html_sidebars = {
     '**': [

@@ -8,18 +8,4 @@
 {# set extrahead to add custom css ? #}
 {% block extrahead %} 
     <link rel="stylesheet" href="../../_static/blockquote.css" type="text/css" />
-{% endblock %}
-
-{% block footer %} {{ super() }}
-
-<style>
-    /* Sidebar header (and topbar for mobile) */
-    .wy-side-nav-search, .wy-nav-top {
-      background: #FF331C;
-    }
-    /* Sidebar */
-    .wy-nav-side {
-      background: #426271;
-    }
-  </style>
-{% endblock %}
+{% endblock %} 
