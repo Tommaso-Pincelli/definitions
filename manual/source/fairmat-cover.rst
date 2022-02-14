@@ -8,22 +8,25 @@ FAIRmat-NeXus Proposal
    IntroductionCover
    OurScope
    Outreach
+   WhichData
    WhatIsNew
 
 
 .. _IntroductionCover:
 
-The FAIRmat proposal to NeXus is an effort by the community of scientists connected to the `FAIRmat consortium <https://www.fairmat-nfdi.eu/fairmat/fairmat_/consortium>`_
+The FAIRmat proposal to NeXus is an effort by the community of scientists of the `FAIRmat consortium <https://www.fairmat-nfdi.eu/fairmat/fairmat_/consortium>`_
 to refine and expand the structure of NeXus. As a project that aims at creating an infrastructure 
 for experimental data to be findable, accessible, interoperable and reusable (F.A.I.R.) in the fields of condensed-matter physics
 and the chemical physics of solids, FAIRmat has adopted NeXus as the common format.
 
 `NeXus <https://www.nexusformat.org/>`_ is a common data exchange format developed for neutron, X-ray, and muon experiments. 
-NeXus is built on top of the scientific data format HDF5 and adds domain-specific rules for organizing data 
+It is built on top of the scientific data format HDF5 and adds domain-specific rules for organizing data 
 within HDF5 files (:ref:`application.definitions`) in addition to a dictionary of well-defined domain-specific 
-field names (:ref:`base.class.definitions`). The combination of these two structures allows it to have sufficient flexibility to cover any 
-experimental technique and instrumentation, while ensuring rigorous, application specific structures that can be accessed automatically.
-The documentation available here includes part of the contents of the NeXus User Manual (available `here <https://manual.nexusformat.org/user_manual.html>`_),
+field names (:ref:`base.class.definitions`). 
+
+The combination of these two structures allows it to have sufficient flexibility to cover any 
+experimental technique and instrumentation, while ensuring rigorous, application-specific structures that can be accessed automatically.
+The documentation available here includes part of the contents of the NeXus User Manual (also available `here <https://manual.nexusformat.org/user_manual.html>`_),
 reported here for the convenience of the user, but restricted to the parts most pertinent to our proposal. For more extensive information,
 please visit the original manual. 
 
@@ -32,16 +35,16 @@ please visit the original manual.
 Our scope and perspective
 #########################
 
-Thanks to an active cooperative approach across a wide variety of experimental 
-techniques, the FAIRmat project has an extraordinary opportunity to expand greatly the set of data/metadata accurately 
+Thanks to a cooperative approach across a wide variety of experimental 
+techniques, the FAIRmat project has an opportunity to expand the set of data/metadata accurately 
 described via NeXus. With a closely-connected team of domain experts, we
-will achieve such expansion while at the same time maintainig a consistent structure across different
+will develop such expansion while at the same time maintainig a consistent structure across different
 techniques and methods, striving for the maximum simplicity of use.
 
 Achieving a standardized and FAIR data structure has a wide spectrum of advantages, ranging from radical
 progress in scientific transparency to the development of new, far-reaching tools that can be shared across
 the whole scientific community. The convenience of such tools can range from guaranteeing data reusability within a single lab, 
-to the open-source availability of ready-to-use, community-generated advanced analysis software. Perhaps the grandest resource, however, 
+to the open-source availability of ready-to-use advanced analysis software. Perhaps the greatest resource, however, 
 is the inclusion of experimental datasets in the `NOMAD Laboratory <https://nomad-lab.eu/about/scope>`_: 
 a data infrastructure that already hosts the largest computational material science repository in the world, 
 a homogeneous and machine readable archive, a human accessible encyclopedia and artificial intelligence access.
@@ -51,9 +54,10 @@ a homogeneous and machine readable archive, a human accessible encyclopedia and 
 Outreach to the community
 ##########################
 
-A data infrastructure is not effective if it is not easy to integrate seamlessly in the day-to-day workflow
+A data infrastructure is not effective if it does not integrate seamlessly in the day-to-day workflow
 of a laboratory. For this reason, we approach our newly developed NeXus proposal as a community-driven development.
-We have drafted an accurate and consistent expansion of NeXus capabilities for a number of lab-based techniques. 
+We have drafted an accurate and consistent expansion of NeXus capabilities for a number of lab-based techniques, but need extensive
+testing and tweaking of its characteristics by the community.
 
 If your data is generated with these techniques and you are interested in producing FAIR data and accessing the FAIRmat tools, 
 we invite you to try our proposed structure out. If you find any conflicts or inconsitencies, please signal them to us using the
@@ -61,6 +65,11 @@ comment section. You will contribute to the creation of a more effective NeXus s
 we will obtain a consistent and practical structure. 
 If you do not find your technique, and would be interested in participating to the development of a standard, please contact us 
 directly at (?).
+
+.. _WhichData:
+
+Which data should I convert?
+############################
 
 You are free to choose at which point in the workflow you wish to convert the data to NeXus, as its flexibility allows to
 describe raw data, pre-processed data and fully processed data. As an entry step, we suggest to use a test dataset
@@ -78,7 +87,38 @@ and you will be naturally inclined to gradually integrate FAIRmat structures and
 What is New?
 ##############
 
-The NeXus data format has four components:
+We have developed new data storage objects (in the form of new application definitions, new base classes and updated existing base classes)
+for the following macro-areas of experimental physics
 
-:ref:`Mpes-Structure` A set of base classes and application definitions for 
-    the ecosystem of experiments dealing with photoemission, encompassing XPS, ARPES, HAXPES etc.
+:ref:`Multidimensional Photoemission Spectroscopy <Mpes-Structure>`:
+    set of data storage objects to describe photoemission experiments, see `here <Mpes-Structure>`_ for a more extensive description.
+     New application definitions:
+       :ref:`NXmpes`
+       :ref:`NXmpes_ARPES`
+     New base classes:
+       :ref:`NXelectronanalyser`
+       :ref:`NXcollectioncolumn`
+       :ref:`NXenergydispersion`
+       :ref:`NXspindispersion`
+       :ref:`NXmanipulator`
+       :ref:`NXcalibration`
+       :ref:`NXdistortion`
+       :ref:`NXregistration`
+       :ref:`NXlens`
+       :ref:`NXdeflector` 
+     Extended base classes:
+       :ref:`NXaperture`
+       :ref:`NXbeam`
+       :ref:`NXdetector`
+       :ref:`NXentry`
+       :ref:`NXprocess`
+       :ref:`NXsample`
+       :ref:`NXsource`
+Electron Microscopy:
+    For Markus to fill.
+Atom Probe Microscopy:
+    For Markus to fill.
+Ellipsometry:
+    For Tamas & Carola to fill.
+       
+             

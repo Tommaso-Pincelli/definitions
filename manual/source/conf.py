@@ -98,7 +98,7 @@ elif html_theme== 'alabaster': # Alabaster allows a very high degree of control 
         'body_text_align': 'justify',
         'logo_name': True,
         'sidebar_width': '235px',
-        'page_width': '950px',
+        'page_width': '1000px',
         'font_size': '12pt',
         'font_family': 'Arial',
         'description': 'Proposal of NeXus expansion for FAIRmat data.',
