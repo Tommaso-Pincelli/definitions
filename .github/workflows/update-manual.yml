@@ -78,7 +78,7 @@ jobs:
       - name: Update pip and install sphinx and required tools
         run: |
           pip install --upgrade pip
-          pip install sphinx sphinx_comments pyresttable
+          pip install lxml Sphinx pyRestTable six
       
       - name: Pull the state of the repository, use sphinx to compile static html pages
         run: |
