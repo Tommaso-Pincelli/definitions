@@ -86,10 +86,12 @@ jobs:
           cd definitions
 
       - name: Use sphinx to compile static html pages
+        run: |
           make all
           ls definitions/manual/build/html
           
       - name: Push these changes to the repo from which gitpages takes the static html pages
+        run: |
           echo "Implement this!"
 
      #- name: Update HTML pages
