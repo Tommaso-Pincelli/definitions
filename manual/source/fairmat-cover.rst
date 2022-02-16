@@ -91,7 +91,7 @@ We have developed new data storage objects (in the form of new application defin
 for the following macro-areas of experimental physics
 
 :ref:`Multidimensional Photoemission Spectroscopy <Mpes-Structure>`:
-    set of data storage objects to describe photoemission experiments, see `here <Mpes-Structure>`_ for a more extensive description.
+    set of data storage objects to describe photoemission experiments, follow the link for a more extensive description.
      New application definitions:
        :ref:`NXmpes`
        :ref:`NXmpes_ARPES`

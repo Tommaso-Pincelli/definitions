@@ -19,7 +19,7 @@
 
 /* Control logo name string */
 .sphinxsidebarwrapper h1.logo {
-    margin-top: 10px !important;
+    margin-top: 0px !important;
     font-size: 21pt !important;
     margin-bottom: 10px !important;
 }
@@ -52,7 +52,7 @@
 /* Control text blurb explaining the project under the logo name */
 .sphinxsidebarwrapper p.blurb {
     margin-top: 10px !important;
-    margin-bottom: 10px !important;
+    margin-bottom: 20px !important;
 }
 
 /* Slightly increase the padding in the body */
