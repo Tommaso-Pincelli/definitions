@@ -77,16 +77,18 @@ jobs:
   
       - name: Update pip and install sphinx and required tools
         run: |
+          echo $GITHUB_WORKSPACE
           pip install --upgrade pip
           pip install lxml Sphinx sphinx_comments pyRestTable six
-      
+        
       - name: Pull the state of the repository
         run: |
           git clone https://github.com/Tommaso-Pincelli/definitions.git
           cd definitions
           make all
-          ls definitions/manual/build/html
+          echo $GITHUB_WORKSPACE
           echo $PWD
+          ls $GITHUB_WORKSPACE/definitions/manual/build/html
           
       - name: Push these changes to the repo from which gitpages takes the static html pages
         run: |
