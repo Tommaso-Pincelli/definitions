@@ -109,8 +109,10 @@ jobs:
           echo $GITHUB_EMAIL
           echo $GITHUB_USERNAME
           echo ${{ github.actor }}
-          git config --global user.email "$GITHUB_EMAIL"
-          git config --global user.name "$GITHUB_USERNAME"
+          #git config --global user.email "$GITHUB_EMAIL"
+          #git config --global user.name "$GITHUB_USERNAME"
+          git config user.email "markus.kuehbach@rwth-aachen.de"
+          git config user.name ${{ github.actor }}
           git remote -v
           git remote set-url origin git@github.com:/mkuehbach/definitions.github.io.git
           git remote -v
@@ -118,7 +120,9 @@ jobs:
           #git status
           git commit -m "Auto-committed through by tommaso pincelli's definitions git repo"
           git status
-          git push
+          REMOTE=https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          echo $REMOTE
+          git push #${REMOTE} master
 
      #- name: Update HTML pages
      #   run: |
