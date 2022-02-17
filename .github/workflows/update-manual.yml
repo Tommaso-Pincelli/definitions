@@ -106,6 +106,7 @@ jobs:
           ls $PWD
           #git config --global user.name "GitHub Actions Bot"
           #git config --global user.email "<>"
+          cd $GITHUB_WORKSPACE/target/definitions.github.io
           echo $GITHUB_EMAIL
           echo $GITHUB_USERNAME
           echo ${{ github.actor }}
@@ -117,7 +118,7 @@ jobs:
           git config user.email "${{ secrets.GH_MAIL }}
           echo ${{ secrets.GH_USER }}
           echo ${{ secrets.GH_MAIL }}
-          #git remote -v
+          git remote -v
           #git remote set-url origin git@github.com:/mkuehbach/definitions.github.io.git
           git remote -v
           git add .
