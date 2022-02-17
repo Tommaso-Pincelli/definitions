@@ -83,10 +83,10 @@ jobs:
         
       - name: Pull the state of the repository
         run: |
-          git clone https://github.com/Tommaso-Pincelli/definitions.git
-          cd definitions
-          make all
+      #    git clone https://github.com/Tommaso-Pincelli/definitions.git
+      #    cd definitions
           echo $GITHUB_WORKSPACE
+          make all
           echo $PWD
           ls $GITHUB_WORKSPACE/definitions/manual/build/html
           
