@@ -82,25 +82,25 @@ jobs:
         
       - name: Pull the state of the source repo, i.e. the one with the rst source code
         run: |
-          echo $GITHUB_WORKSPACE 
+          echo $GITHUB_WORKSPACE
+          mkdir -p source
+          mv source
           git clone https://github.com/Tommaso-Pincelli/definitions.git
           cd definitions
           make all
           echo $PWD
           #ls $GITHUB_WORKSPACE/definitions/manual/build/html
-          
-      - name: Pull the state of the target repo, i.e. the one where static html pages should be placed
-        run: |
           cd $GITHUB_WORKSPACE
+          mkdir -p target
+          mv target
           git clone https://github.com/mkuehbach/definitions.github.io.git
-          ls $GITHUB_WORKSPACE
+          ls $PWD
           cd docs
-          cp -R $GITHUB_WORKSPACE/definitions/manual/build/html $GITHUB_WORKSPACE/xxx/docs
+          cp -R $GITHUB_WORKSPACE/target/definitions/manual/build/html $GITHUB_WORKSPACE/source/docs
           ##currently in the target repo
           #git add .
           #git commit -m "updated"
           #git push
-          #echo "Implement this!"
 
      #- name: Update HTML pages
      #   run: |
