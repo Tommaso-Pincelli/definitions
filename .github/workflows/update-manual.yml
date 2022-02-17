@@ -104,13 +104,13 @@ jobs:
           cp -R $GITHUB_WORKSPACE/source/definitions/manual/build/html $GITHUB_WORKSPACE/target/definitions.github.io/docs
           ##currently in the target repo
           ls $PWD
-          git config user.name "GitHub Actions Bot"
-          git config user.email "<>"
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "<>"
           #git config --local user.email "$GITHUB_EMAIL"
           #git config --local user.name "$GITHUB_USERNAME"
           git remote -v
-          #git remote set-url origin git@github.com:/mkuehbach/definitions.github.io.git
-          #git remote -v
+          git remote set-url origin git@github.com:/mkuehbach/definitions.github.io.git
+          git remote -v
           git add .
           #git status
           git commit -m "Auto-committed through Tommaso-Pincelli/definitions.git"
