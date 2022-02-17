@@ -11,6 +11,7 @@ jobs:
   nexus-fairmat-manual-gen:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Set up Python 3.9
         uses: actions/setup-python@v2        
         with:
@@ -18,7 +19,6 @@ jobs:
           #persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
           #fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
       - name: Update pip and install sphinx and required tools to create static HTML pages with sphinx
-        uses: actions/checkout@v2
         run: |
           echo $GITHUB_WORKSPACE
           pip install --upgrade pip
@@ -34,7 +34,7 @@ jobs:
           #git clone git@github.com:Tommaso-Pincelli/definitions.git
           cd definitions
           make all
-          cd $GITHUB_WORKSPACE  
+          cd $GITHUB_WORKSPACE 
       - name: Push to an another repository
         id: push_directory
         uses: mkuehbach/definitions.github.io@main
