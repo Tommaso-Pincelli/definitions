@@ -95,11 +95,13 @@ jobs:
           cd target
           git clone https://github.com/mkuehbach/definitions.github.io.git
           cd definitions.github.io/docs
-          cp -R $GITHUB_WORKSPACE/target/definitions/manual/build/html $GITHUB_WORKSPACE/source/docs
+          cp -R $GITHUB_WORKSPACE/source/definitions/manual/build/html $GITHUB_WORKSPACE/target/definitions.github.io/docs
           ##currently in the target repo
-          #git add .
-          #git commit -m "updated"
-          #git push
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add .
+          git commit -m "updated"
+          git push
 
      #- name: Update HTML pages
      #   run: |
@@ -109,8 +111,7 @@ jobs:
      # - name: Commit files
      #   run: |
      #     export PR_NO=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
-     #     git config --local user.email "action@github.com"
-     #     git config --local user.name "GitHub Action"
+
      #     git add $PR_NO --all
      #     git commit -m "Generated preview for PR $PR_NO on $(date)" -a
      #     git push
