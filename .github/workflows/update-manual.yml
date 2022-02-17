@@ -85,18 +85,20 @@ jobs:
           cd $GITHUB_WORKSPACE
           mkdir -p source
           cd source
+          ls $PWD
           git clone https://github.com/Tommaso-Pincelli/definitions.git
           cd definitions
           make all
-          #echo $PWD
-          #ls $GITHUB_WORKSPACE/definitions/manual/build/html
           cd $GITHUB_WORKSPACE
           mkdir -p target
           cd target
+          ls $PWD
           git clone https://github.com/mkuehbach/definitions.github.io.git
           cd definitions.github.io/docs
+          echo "Carrying changes over to local version of the repo!"
           cp -R $GITHUB_WORKSPACE/source/definitions/manual/build/html $GITHUB_WORKSPACE/target/definitions.github.io/docs
           ##currently in the target repo
+          ls $PWD
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           git add .
