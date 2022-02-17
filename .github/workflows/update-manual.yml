@@ -111,18 +111,23 @@ jobs:
           echo ${{ github.actor }}
           #git config --global user.email "$GITHUB_EMAIL"
           #git config --global user.name "$GITHUB_USERNAME"
-          git config user.email "markus.kuehbach@rwth-aachen.de"
-          git config user.name ${{ github.actor }}
-          git remote -v
-          git remote set-url origin git@github.com:/mkuehbach/definitions.github.io.git
+          #git config user.email "markus.kuehbach@rwth-aachen.de"
+          #git config user.name ${{ github.actor }}
+          git config user.name ${{ secrets.GH_USER }}
+          git config user.email "${{ secrets.GH_MAIL }}
+          echo ${{ secrets.GH_USER }}
+          echo ${{ secrets.GH_MAIL }}
+          #git remote -v
+          #git remote set-url origin git@github.com:/mkuehbach/definitions.github.io.git
           git remote -v
           git add .
           #git status
           git commit -m "Auto-committed through by tommaso pincelli's definitions git repo"
           git status
-          REMOTE=https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          echo $REMOTE
-          git push #${REMOTE} master
+          #REMOTE=https://${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          #echo $REMOTE
+          #git push #${REMOTE} master
+          git push
 
      #- name: Update HTML pages
      #   run: |
