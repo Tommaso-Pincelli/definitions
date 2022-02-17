@@ -1,11 +1,10 @@
 name: Generate Webpage
 
-on:
+on: push
   #pull_request:
   #  branches: [ master ]
-
   # Allows you to run this workflow manually from the Actions tab
-  workflow_dispatch:
+  #workflow_dispatch:
 jobs:
   webpage-gen-pr:
     runs-on: ubuntu-latest
@@ -83,13 +82,13 @@ jobs:
         
       - name: Pull the state of the repository
         run: |
-      #    git clone https://github.com/Tommaso-Pincelli/definitions.git
-      #    cd definitions
           echo $GITHUB_WORKSPACE
           make all
           echo $PWD
           ls $GITHUB_WORKSPACE/definitions/manual/build/html
-          
+      #   git clone https://github.com/Tommaso-Pincelli/definitions.git
+      #   cd definitions
+
       - name: Push these changes to the repo from which gitpages takes the static html pages
         run: |
           echo $PWD
