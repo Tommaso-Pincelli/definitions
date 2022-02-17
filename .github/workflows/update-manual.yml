@@ -84,14 +84,13 @@ jobs:
         run: |
           git clone https://github.com/Tommaso-Pincelli/definitions.git
           cd definitions
-
-      - name: Use sphinx to compile static html pages
-        run: |
           make all
           ls definitions/manual/build/html
+          echo $PWD
           
       - name: Push these changes to the repo from which gitpages takes the static html pages
         run: |
+          echo $PWD
           echo "Implement this!"
 
      #- name: Update HTML pages
