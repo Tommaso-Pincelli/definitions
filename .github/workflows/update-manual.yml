@@ -84,18 +84,21 @@ jobs:
         run: |
           echo $GITHUB_WORKSPACE
           mkdir -p source
-          mv source
+          cd source
           git clone https://github.com/Tommaso-Pincelli/definitions.git
+          ls $PWD
           cd definitions
+          echo $PWD
           make all
           echo $PWD
           #ls $GITHUB_WORKSPACE/definitions/manual/build/html
           cd $GITHUB_WORKSPACE
           mkdir -p target
-          mv target
+          cd target
           git clone https://github.com/mkuehbach/definitions.github.io.git
           ls $PWD
           cd docs
+          echo $PWD
           cp -R $GITHUB_WORKSPACE/target/definitions/manual/build/html $GITHUB_WORKSPACE/source/docs
           ##currently in the target repo
           #git add .
