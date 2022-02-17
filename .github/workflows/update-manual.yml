@@ -105,10 +105,10 @@ jobs:
           ##currently in the target repo
           ls $PWD
           git config --local user.email "GITHUB_EMAIL"
-          #git config --local user.name "GITHUB_USERNAME"
+          git config --local user.name "GITHUB_USERNAME"
           git remote -v
-          git remote set-url origin git@github.com:/mkuehbach/definitions.github.io.git
-          git remote -v
+          #git remote set-url origin git@github.com:/mkuehbach/definitions.github.io.git
+          #git remote -v
           git add .
           #git status
           git commit -m "Auto-committed through Tommaso-Pincelli/definitions.git"
