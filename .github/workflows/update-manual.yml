@@ -104,8 +104,8 @@ jobs:
           cp -R $GITHUB_WORKSPACE/source/definitions/manual/build/html $GITHUB_WORKSPACE/target/definitions.github.io/docs
           ##currently in the target repo
           ls $PWD
-          #git config --local user.email "action@github.com"
-          #git config --local user.name "GitHub Action"
+          git config --local user.email "GITHUB_EMAIL"
+          #git config --local user.name "GITHUB_USERNAME"
           git remote -v
           git remote set-url origin git@github.com:/mkuehbach/definitions.github.io.git
           git remote -v
