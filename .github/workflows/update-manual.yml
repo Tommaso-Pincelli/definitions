@@ -89,7 +89,7 @@ jobs:
           echo $PWD
           #ls $GITHUB_WORKSPACE/definitions/manual/build/html
           
-      - name Pull the state of the target repo, i.e. the one where static html pages should be placed
+      - name: Pull the state of the target repo, i.e. the one where static html pages should be placed
         run: |
           cd $GITHUB_WORKSPACE
           git clone https://github.com/mkuehbach/definitions.github.io.git
