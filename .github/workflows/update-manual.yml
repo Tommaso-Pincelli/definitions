@@ -11,42 +11,106 @@ jobs:
   nexus-fairmat-manual-gen:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      #- id: addKey
+      #  name: Add key for staging push
+      #  uses: webfactory/ssh-agent@ee29fafb6aa450493bac9136b346e51ea60a8b5e
+      #  with:
+      #    ssh-private-key: ${{ secrets.STAGING_KEY }}
+
+      #- uses: mshick/add-pr-comment@v1
+      #  if: ${{ failure()  && steps.addKey.conclusion == 'failure' }}
+      #  with:
+      #    message: "Staging key could not be imported, cannot push to
+      #      oscovida/staging to create test website instance. If this PR is
+      #      external it may not have access to the required secrets."
+      #    repo-token: ${{ secrets.GITHUB_TOKEN }}
+      #    repo-token-user-login: 'github-actions[bot]'
+      #    allow-repeats: false
+
+      #- name: Early exit for missing staging keys
+      #  if: ${{ failure() && steps.addKey.conclusion == 'failure' }}
+      #  uses: andymckay/cancel-action@0.2
+
       - name: Set up Python 3.9
-        uses: actions/setup-python@v2        
+        uses: actions/setup-python@v2
         with:
           python-version: 3.9
-          #persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
-          #fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
-      - name: Update pip and install sphinx and required tools to create static HTML pages with sphinx
+          persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal access token.
+          fetch-depth: 0 # otherwise, there would be errors pushing refs to the destination repository.
+
+      #- name: Checkout oscovida/staging
+      #  uses: actions/checkout@v2
+      #  with:
+      #    ssh-key: ${{ secrets.STAGING_KEY }}
+      #    repository: oscovida/staging
+      #    persist-credentials: false # otherwise, the token used is the GITHUB_TOKEN, instead of your personal token
+      #    fetch-depth: 0 # otherwise, you will failed to push refs to dest repo
+
+      #- name: Checkout oscovida pr branch
+      #  uses: actions/checkout@v2
+      #  with:
+      #    path: oscovida
+      #    ref: ${{ github.event.pull_request.head.sha }}
+
+      #- name: Set up oscovida and webgen
+      #  run: |
+      #    pip install ./oscovida
+      #    pip install -r ./base/requirements.txt
+      #- name: Run pre-generate hook
+      #  run: |
+      #    ./oscovida/tools/oscovida.github.io/pre-generate.sh
+      #- name: Generate new reports
+      #  run: |
+      #    export PR_NO=$(jq --raw-output .pull_request.number "$GITHUB_EVENT_PATH")
+      #    cp -r ./base $PR_NO
+      #    export WWWROOT=$(readlink -f $PR_NO)
+      #    echo $WWWROOT
+      #    cd ./oscovida/tools/
+      #    ln -s $WWWROOT ./wwwroot
+      #    ls ./wwwroot
+      #    python3 -m report_generators.cli --debug \
+      #      --regions=all  \
+      #      --workers=max  \
+      #      --log-level=INFO  \
+      #      --log-file=./wwwroot/report-gen.log
+      #- name: Run post-generate hook
+      #  run: |
+      #    ./oscovida/tools/oscovida.github.io/post-generate.sh
+  
+      - name: Update pip and install sphinx and required tools
         run: |
           echo $GITHUB_WORKSPACE
           pip install --upgrade pip
-          pip install lxml Sphinx sphinx_comments pyRestTable six      
-      - name: Get the source repo, i.e. the NeXus-FAIRmat experimental, which has the rst source code
-        # uses: actions/checkout@v2 instead?
+          pip install lxml Sphinx sphinx_comments pyRestTable six
+        
+      - name: Pull the state of the source repo, i.e. the one with the rst source code
         run: |
           cd $GITHUB_WORKSPACE
           mkdir -p source
           cd source
           ls $PWD
-          git clone https://github.com/Tommaso-Pincelli/definitions.git
-          #git clone git@github.com:Tommaso-Pincelli/definitions.git
+          #git clone https://github.com/Tommaso-Pincelli/definitions.git
+          git clone git@github.com:Tommaso-Pincelli/definitions.git
           cd definitions
           make all
-          cd $GITHUB_WORKSPACE 
-      - name: Push to an another repository
-        id: push_directory
-        uses: mkuehbach/definitions.github.io@main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
-        with:
-          source-directory: output/
-          destination-github-username: 'mkuehbach'
-          destination-repository-name: 'definitions.github.io'
-          user-email: markus.kuehbach@rwth-aachen.de
-          commit-message: See ORIGIN_COMMIT from $GITHUB_REF
-          target-branch: main  
+          cd $GITHUB_WORKSPACE
+          mkdir -p target
+          cd target
+          ls $PWD
+          #git clone https://github.com/mkuehbach/definitions.github.io.git
+          git clone git@github.com:mkuehbach/definitions.github.io.git
+          cd definitions.github.io/docs
+          echo "Carrying changes over to local version of the repo!"
+          cp -R $GITHUB_WORKSPACE/source/definitions/manual/build/html $GITHUB_WORKSPACE/target/definitions.github.io/docs
+          ##currently in the target repo
+          ls $PWD
+          #git config --local user.email "action@github.com"
+          #git config --local user.name "GitHub Action"
+          git add .
+          #git status
+          git commit -m "updated"
+          git status
+          git push
 
      #- name: Update HTML pages
      #   run: |
