@@ -2,9 +2,9 @@ name: Generate Webpage
 
 on: # push
   push:
-    branches: [ master ]
+    branches: [ main ]
   #pull_request:
-  #  branches: [ master ]
+  #  branches: [ main ]
   # if you would like to trigger manually the execution of this workflow (e.g. from the actions tab)
   #workflow_dispatch:
 jobs:
