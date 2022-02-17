@@ -106,9 +106,12 @@ jobs:
           ls $PWD
           #git config --local user.email "action@github.com"
           #git config --local user.name "GitHub Action"
+          git remote -v
+          git remote set-url origin git@github.com:/mkuehbach/definitions.github.io.git
+          git remote -v
           git add .
           #git status
-          git commit -m "updated"
+          git commit -m "Auto-committed through Tommaso-Pincelli/definitions.git"
           git status
           git push
 
